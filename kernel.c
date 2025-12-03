@@ -49,6 +49,9 @@ void kernel_main(void) {
     //     putchar(s[i]);
     // }
 
+    PANIC("booted!");
+    printf("unreachable here!\n");
+
     for(;;) {//keep in this function
         __asm__ __volatile__("wfi");
     }
