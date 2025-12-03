@@ -1,5 +1,44 @@
 #include "common.h"
 
+
+// 将 n 字节从 src 复制到 dst
+void *memcpy(void *dst, const void *src, size_t n) {
+    uint8_t *d = (uint8_t *) dst;
+    const uint8_t *s = (const uint8_t *) src;
+    while (n--)
+        *d++ = *s++;
+    return dst;
+}
+
+// 将 `c` 填充到 *buf 的前 n 字节
+void *memset(void *buf, char c,size_t n) {
+    uint8_t *p = (uint8_t *) buf;
+    while (n--)
+        *p++ = c;
+    return buf;
+}
+
+//将 *src 的内容赋值给 *dst，但即便src比dst的内存区域长也会继续复制，会出现bug，有返回值是因为方便在函数中表达如 `printf("%s\n", strcpy(buf, "hello"));` 
+char *strcpy(char *dst, const char *src) {
+    char *d = dst;
+    while (*src)
+        *d++ = *src++;
+    *d = '\0';
+    return dst;
+}
+
+//比较字符大小，方法是先排到字符不同的部分开始比较 ASCII 大小
+int strcmp(const char *s1, const char *s2) {
+    while (*s1 && *s2) {
+        if (*s1 != *s2)
+            break;
+        s1++;
+        s2++;
+    }
+
+    return *(unsigned char *)s1 - *(unsigned char *)s2;
+}
+
 void putchar(char ch);
 
 void printf(const char *fmt, ...) {
