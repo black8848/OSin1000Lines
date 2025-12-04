@@ -10,6 +10,7 @@
 4. 回忆一下，__asm__ __volatile__("assembly" : output operands : input operands : clobbered registers); 
 
     “=r 是输出操作数、 r 是输入操作数”，clobbered registers (破坏寄存器)的意思是这块区域会被汇编写入，编译器不应该再信任这块区域的值
+    记忆更新：输出操作数不是指动作，而是指被用作输出的操作数，也即「输出寄存器」，输入操作数同理
     > 假如这里存放关键变量的值，但是汇编会写入这块区域，所以编译器不能再信任这块关键变量
 
 
