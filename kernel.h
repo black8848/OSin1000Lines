@@ -63,6 +63,8 @@ struct trap_frame {
         __asm__ __volatile__("csrw " #reg ", %0" ::"r"(__tmp));                \
     } while (0)
 
+#define PAGE_SIZE 4096
+
 // ({
 //     ...
 // }) 的作用是将最后一行的值当作返回值返回
